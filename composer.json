@@ -8,5 +8,10 @@
             "email": "georgi.alexandroff@yahoo.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "src/Dushevadnqka/Core"
+        }
+    }
 }
