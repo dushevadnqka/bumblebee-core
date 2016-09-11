@@ -1,0 +1,12 @@
+{
+    "name": "dushevadnqka/bumblebee-core",
+    "description": "The core module for Bumblebee frmwrk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Georgi Aleksandrov",
+            "email": "georgi.alexandroff@yahoo.com"
+        }
+    ],
+    "require": {}
+}
