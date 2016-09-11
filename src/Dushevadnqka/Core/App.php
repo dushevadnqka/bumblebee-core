@@ -1,6 +1,6 @@
 <?php
 
-namespace Dushevadnqka\Core;
+namespace Core;
 
 class App
 {
