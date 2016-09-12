@@ -45,6 +45,7 @@ final class FrontController
         if (array_key_exists(1, $segments)) {
             /*
              * action
+             * @TODO: if is in camil case ->transform it to dashed
              */
             $this->setAction($segments[1]);
         }
