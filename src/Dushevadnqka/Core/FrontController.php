@@ -72,7 +72,8 @@ final class FrontController
 
         if (!class_exists($controller)) {
             throw new \Exception(
-            "The action controller '$controller' has not been defined.");
+                "The action controller '$controller' has not been defined."
+            );
         }
 
         return $this->controller = $controller;
@@ -84,7 +85,8 @@ final class FrontController
 
         if (!$reflector->hasMethod($action)) {
             throw new InvalidArgumentException(
-            "The controller action '$action' has been not defined.");
+                "The controller action '$action' has been not defined."
+            );
         }
         $this->action = $action;
     }
@@ -96,8 +98,10 @@ final class FrontController
 
     public function fire()
     {
-        call_user_func_array([new $this->controller, $this->action],
-            $this->params);
+        call_user_func_array(
+            [new $this->controller, $this->action],
+            $this->params
+        );
     }
 
     /**
@@ -106,7 +110,7 @@ final class FrontController
      */
     public static function getInstance()
     {
-        if (self::$instance == NULL) {
+        if (self::$instance == null) {
             self::$instance = new FrontController();
         }
         return self::$instance;

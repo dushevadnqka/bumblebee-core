@@ -15,7 +15,6 @@ class Config
 
     private function __construct()
     {
-
     }
 
     public function getConfigFolder()
@@ -29,7 +28,7 @@ class Config
             throw new \Exception("Empty config folder path");
         }
         $configFolder = realpath($configFolderParam);
-        if ($configFolder != FALSE && is_dir($configFolder) && is_readable($configFolder)) {
+        if ($configFolder != false && is_dir($configFolder) && is_readable($configFolder)) {
             $this->configArray  = [];
             $this->configFolder = $configFolder.DIRECTORY_SEPARATOR;
         } else {
@@ -43,7 +42,7 @@ class Config
             throw new \Exception("Error include CNF");
         }
         $file = realpath($path);
-        if ($file != FALSE && is_file($file) && is_readable($file)) {
+        if ($file != false && is_file($file) && is_readable($file)) {
             $_basename                     = explode('.php', basename($file))[0];
             $this->configArray[$_basename] = include $file;
         } else {
@@ -69,7 +68,7 @@ class Config
      */
     public static function getInstance()
     {
-        if (self::$instance == NULL) {
+        if (self::$instance == null) {
             self::$instance = new Config();
         }
         return self::$instance;
