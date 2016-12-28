@@ -9,13 +9,8 @@ namespace Core;
  */
 class Config
 {
-    private static $instance = null;
-    private $configArray     = [];
-    private $configFolder    = null;
-
-    private function __construct()
-    {
-    }
+    private $configArray  = [];
+    private $configFolder = null;
 
     public function getConfigFolder()
     {
@@ -43,8 +38,8 @@ class Config
         }
         $file = realpath($path);
         if ($file != false && is_file($file) && is_readable($file)) {
-            $_basename                     = explode('.php', basename($file))[0];
-            $this->configArray[$_basename] = include $file;
+            $basename                     = explode('.php', basename($file))[0];
+            $this->configArray[$basename] = include $file;
         } else {
             //@TODO
             throw new \Exception("Config file read error: ".$path);
@@ -60,17 +55,5 @@ class Config
             return $this->configArray[$name];
         }
         return null;
-    }
-
-    /**
-     *
-     * @return Core\Config
-     */
-    public static function getInstance()
-    {
-        if (self::$instance == null) {
-            self::$instance = new Config();
-        }
-        return self::$instance;
     }
 }

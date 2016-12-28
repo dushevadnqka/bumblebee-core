@@ -9,15 +9,13 @@ namespace Core;
  */
 final class FrontController
 {
-    private static $instance = null;
     private $basePath;
     private $controller;
     private $action = 'index';
     private $params = [];
 
-    private function __construct()
+    public function __construct($config)
     {
-        $config           = Config::getInstance();
         $this->basePath   = $config->routes['application_domain'];
         $this->controller = $config->routes['base_controller'];
 
@@ -102,17 +100,5 @@ final class FrontController
             [new $this->controller, $this->action],
             $this->params
         );
-    }
-
-    /**
-     *
-     * @return Core\FrontController
-     */
-    public static function getInstance()
-    {
-        if (self::$instance == null) {
-            self::$instance = new FrontController();
-        }
-        return self::$instance;
     }
 }

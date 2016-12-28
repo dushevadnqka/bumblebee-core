@@ -9,13 +9,12 @@ namespace Core;
  */
 class App
 {
-    private static $instance = null;
     private $config          = null;
     private $dbConnections   = [];
 
-    private function __construct()
+    public function __construct()
     {
-        $this->config = Config::getInstance();
+        $this->config = new Config();
         if ($this->config->getConfigFolder() == null) {
             $this->setConfigFolder(getcwd().'/../config');
         }
@@ -28,19 +27,7 @@ class App
 
     public function run()
     {
-        $controller = FrontController::getInstance();
+        $controller = new FrontController($this->config);
         $controller->fire();
-    }
-
-   /**
-    *
-    * @return Core/App
-    */
-    public static function getInstance()
-    {
-        if (self::$instance == null) {
-            self::$instance = new App();
-        }
-        return self::$instance;
     }
 }
