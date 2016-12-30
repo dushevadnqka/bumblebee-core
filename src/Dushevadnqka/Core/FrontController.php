@@ -96,9 +96,9 @@ final class FrontController
 
     public function fire()
     {
-        call_user_func_array(
-            [new $this->controller, $this->action],
-            $this->params
-        );
+        $containerBuilder = new \DI\ContainerBuilder();
+        $container = $containerBuilder->build();
+
+        $container->call([$this->controller, $this->action], $this->params);
     }
 }
